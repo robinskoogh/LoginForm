@@ -50,7 +50,7 @@ namespace LoginFormUI
 
         private void postTwaatButton_Click(object sender, EventArgs e)
         {
-            var newTwaat = new TwaatModel();
+            var newTwaat = new TwaatModel(twaatContentRichTextBox.Text);
             newTwaat.UserId = currentUser.Id;
             newTwaat.Content = twaatContentRichTextBox.Text;
             newTwaat.TimeOfPosting = DateTime.Now;

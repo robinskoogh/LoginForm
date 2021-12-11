@@ -65,6 +65,13 @@ namespace LoginFormDataAccess.DataAccess
             return usersCollection.ReplaceOneAsync(filter, user);
         }
 
+        public Task EditTwatterPost(TwaatModel twatterPost)
+        {
+            var twaatCollection = ConnectToMongo<TwaatModel>(TwaatCollection);
+            var filter = Builders<TwaatModel>.Filter.Eq("Id", twatterPost.Id);
+            return twaatCollection.ReplaceOneAsync(filter, twatterPost);
+        }
+
         /// <summary>
         /// Tries to fetch a user with the specified user id.
         /// </summary>
