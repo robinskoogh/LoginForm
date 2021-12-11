@@ -108,6 +108,7 @@
             this.userMenuFriendsButton.TabIndex = 10;
             this.userMenuFriendsButton.Text = "Friends";
             this.userMenuFriendsButton.UseVisualStyleBackColor = true;
+            this.userMenuFriendsButton.Click += new System.EventHandler(this.userMenuFriendsButton_Click);
             // 
             // postedTwaatsListBox
             // 

@@ -91,5 +91,10 @@ namespace LoginFormUI
             newTwaatForm.SetUser(this, currentUser.Id);
             newTwaatForm.Show();
         }
+
+        private void userMenuFriendsButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This feature is coming soon!");
+        }
     }
 }
