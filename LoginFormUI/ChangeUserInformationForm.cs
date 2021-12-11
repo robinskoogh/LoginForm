@@ -32,7 +32,7 @@ namespace LoginFormUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void logoutButton_Click(object sender, EventArgs e)
+        private void doneUpdatingButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
