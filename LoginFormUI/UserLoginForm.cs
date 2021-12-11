@@ -51,8 +51,8 @@ namespace LoginFormUI
                         this.Hide();
                         usernameValue.Clear();
                         passwordValue.Clear();
-                        var userLoggedIn = new UserLoggedInForm();
-                        userLoggedIn.FillUserInformation(user);
+                        var userLoggedIn = new UserProfileForm();
+                        userLoggedIn.SetUser(this, user.Id);
                         userLoggedIn.Show();
                     }
                     else

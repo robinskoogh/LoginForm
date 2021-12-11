@@ -15,6 +15,7 @@ namespace LoginFormUI
     public partial class CreateNewUserForm : Form
     {
         LoginDataAccess db = new LoginDataAccess();
+        DataValidation dv = new DataValidation();
 
         public CreateNewUserForm()
         {
@@ -30,16 +31,24 @@ namespace LoginFormUI
         {
             if (ValidateForm().isValid)
             {
-                var newUser = new UserModel();
-                newUser.Username = newUsernameValue.Text;
-                newUser.Password = newPasswordValue.Text;
-                newUser.FirstName = newFirstNameValue.Text;
-                newUser.LastName = newLastNameValue.Text;
-                newUser.Email = newEmailValue.Text;
+                if (db.UsernameIsAvailable(newUsernameValue.Text))
+                {
+                    var newUser = new UserModel();
+                    newUser.Username = newUsernameValue.Text;
+                    newUser.Password = newPasswordValue.Text;
+                    newUser.FirstName = newFirstNameValue.Text;
+                    newUser.LastName = newLastNameValue.Text;
+                    newUser.Email = newEmailValue.Text;
 
-                db.CreateUser(newUser);
+                    db.CreateUser(newUser);
 
-                this.Close();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("That username is already taken");
+                }
+                
             }
             else
             {
@@ -63,7 +72,7 @@ namespace LoginFormUI
                 outputMessage += "Username\n";
             }
 
-            if (newPasswordValue.Text.Length < 6)
+            if (newPasswordValue.Text.Length < 6 && newPasswordValue.Text != newUsernameValue.Text)
             {
                 output = false;
                 outputMessage += "Password\n";
@@ -81,7 +90,7 @@ namespace LoginFormUI
                 outputMessage += "Last Name\n";
             }
 
-            if (newEmailValue.Text == "" || !newEmailValue.Text.Contains('@'))
+            if (!dv.ValidEmail(newEmailValue.Text))
             {
                 output = false;
                 outputMessage += "Email";

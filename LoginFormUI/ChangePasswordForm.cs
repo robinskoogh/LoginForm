@@ -16,7 +16,7 @@ namespace LoginFormUI
     {
         UserModel currentUser = new UserModel();
         LoginDataAccess db = new LoginDataAccess();
-        UserLoggedInForm userForm;
+        ChangeUserInformationForm userForm;
 
         public ChangePasswordForm()
         {
@@ -26,7 +26,7 @@ namespace LoginFormUI
         public void SetUser(object sender, string userId)
         {
             currentUser = db.GetUserFromId(userId);
-            userForm = sender as UserLoggedInForm;
+            userForm = sender as ChangeUserInformationForm;
         }
 
         private void confirmChangePasswordButton_Click(object sender, EventArgs e)

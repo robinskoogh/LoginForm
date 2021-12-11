@@ -12,13 +12,16 @@ using System.Windows.Forms;
 
 namespace LoginFormUI
 {
-    public partial class UserLoggedInForm : Form
+    public partial class ChangeUserInformationForm : Form
     {
         string userId;
+        UserModel currentUser;
+        UserProfileForm userForm;
 
         LoginDataAccess db = new LoginDataAccess();
+        DataValidation dv = new DataValidation();
 
-        public UserLoggedInForm()
+        public ChangeUserInformationForm()
         {
             InitializeComponent();
         }
@@ -32,6 +35,12 @@ namespace LoginFormUI
         private void logoutButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void SetUser(object sender, string userId)
+        {
+            currentUser = db.GetUserFromId(userId);
+            userForm = sender as UserProfileForm;
         }
 
         /// <summary>
@@ -85,6 +94,7 @@ namespace LoginFormUI
             bool output = true;
             string outputMessage = "";
 
+
             if (userFirstNameValue.Text == "")
             {
                 output = false;
@@ -97,7 +107,7 @@ namespace LoginFormUI
                 outputMessage += "Last Name\n";
             }
 
-            if (userEmailValue.Text == "" || !userEmailValue.Text.Contains('@'))
+            if (!dv.ValidEmail(userEmailValue.Text))
             {
                 output = false;
                 outputMessage += "Email";
@@ -116,7 +126,7 @@ namespace LoginFormUI
 
         private void UserForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.mainForm.Show();
+            userForm.Show();
         }
     }
 }

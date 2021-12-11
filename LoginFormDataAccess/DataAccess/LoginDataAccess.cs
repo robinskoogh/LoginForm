@@ -11,9 +11,9 @@ namespace LoginFormDataAccess.DataAccess
     public class LoginDataAccess
     {
         private const string ConnectionString = "mongodb://127.0.0.1:27017";    // Local MongoDb Server
-        private const string Database = "userdb_test";  // Database to connect to. Does not have to already exist, will be created when called upon first time.
-        private const string UserCollection = "users";  // Document collection; users. Does not have to already exist either, same as above.
-                                                        // Can add more collections and input them via ConnectToMongo-method
+        private const string Database = "userdb_test";      // Database to connect to. Does not have to already exist, will be created when called upon first time.
+        private const string UserCollection = "users";      // Document collection; users. Does not have to already exist either, same as above.
+        private const string TwaatCollection = "twaats";    // Can add more collections and input them via ConnectToMongo-method
 
         /// <summary>
         /// Connection to Mongodb to the collection supplied. 
@@ -40,6 +40,19 @@ namespace LoginFormDataAccess.DataAccess
             return usersCollection.InsertOneAsync(user);
         }
 
+        public Task CreateTwaat(TwaatModel twaat)
+        {
+            var twaatCollection = ConnectToMongo<TwaatModel>(TwaatCollection);
+            return twaatCollection.InsertOneAsync(twaat);
+        }
+
+        public async Task<List<TwaatModel>> GetAllTwaats()
+        {
+            var twaatCollection = ConnectToMongo<TwaatModel>(TwaatCollection);
+            var results = await twaatCollection.FindAsync(_ => true);
+            return results.ToList();
+        }
+
         /// <summary>
         /// Update user record
         /// </summary>
@@ -62,6 +75,19 @@ namespace LoginFormDataAccess.DataAccess
             var usersCollection = ConnectToMongo<UserModel>(UserCollection);
             var user = usersCollection.Find(u => u.Id == userId).FirstOrDefault();
             return user;
+        }
+
+        public bool UsernameIsAvailable(string username)
+        {
+            bool output = true;
+            var usersCollection = ConnectToMongo<UserModel>(UserCollection);
+            var user = usersCollection.Find(u => u.Username == username).FirstOrDefault();
+            if (user != null)
+            {
+                output = false;
+            }
+
+            return output;
         }
 
         /// <summary>

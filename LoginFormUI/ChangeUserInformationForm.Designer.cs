@@ -1,6 +1,6 @@
 ﻿namespace LoginFormUI
 {
-    partial class UserLoggedInForm
+    partial class ChangeUserInformationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -140,7 +140,7 @@
             this.changePasswordButton.UseVisualStyleBackColor = true;
             this.changePasswordButton.Click += new System.EventHandler(this.changePasswordButton_Click);
             // 
-            // UserForm
+            // ChangeUserInformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -160,8 +160,8 @@
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Name = "UserForm";
-            this.Text = "User";
+            this.Name = "ChangeUserInformationForm";
+            this.Text = "Change User Information";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
