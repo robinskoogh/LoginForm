@@ -84,7 +84,6 @@ namespace LoginFormUI
 
         private void getTwaatsButton_Click(object sender, EventArgs e)
         {
-            postedTwaatsListBox.Items.Clear();
             OccupyTwaatList();
         }
 
@@ -117,7 +116,11 @@ namespace LoginFormUI
 
         private void userMenuFriendsButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature is coming soon!");
+            var friendsMenu = new FriendsMenuForm();
+            friendsMenu.FillForm(currentUser.Id, this);
+
+            this.Hide();
+            friendsMenu.Show();
         }
 
         private void hideMyTwaatsCheckBox_CheckedChanged(object sender, EventArgs e)

@@ -129,11 +129,11 @@
             // 
             // showTwaatsButton
             // 
-            this.showTwaatsButton.Location = new System.Drawing.Point(273, 154);
+            this.showTwaatsButton.Location = new System.Drawing.Point(273, 152);
             this.showTwaatsButton.Name = "showTwaatsButton";
-            this.showTwaatsButton.Size = new System.Drawing.Size(142, 36);
+            this.showTwaatsButton.Size = new System.Drawing.Size(142, 38);
             this.showTwaatsButton.TabIndex = 12;
-            this.showTwaatsButton.Text = "Show Twaats";
+            this.showTwaatsButton.Text = "Update list";
             this.showTwaatsButton.UseVisualStyleBackColor = true;
             this.showTwaatsButton.Click += new System.EventHandler(this.getTwaatsButton_Click);
             // 

@@ -53,6 +53,13 @@ namespace LoginFormDataAccess.DataAccess
             return results.ToList();
         }
 
+        public async Task<List<TwaatModel>> GetAllTwaatsByUserId(string userId)
+        {
+            var twaatCollection = ConnectToMongo<TwaatModel>(TwaatCollection);
+            var results = await twaatCollection.FindAsync(t => t.UserId == userId);
+            return results.ToList();
+        }
+
         /// <summary>
         /// Update user record
         /// </summary>

@@ -40,7 +40,7 @@ namespace LoginFormUI
 
         public void GetTwatterPost(TwaatModel twaatModel)
         {
-            postedByUserValue.Text = db.GetUserFromId(twaatModel.UserId).Username;
+            postedByUserLinkLabelValue.Text = db.GetUserFromId(twaatModel.UserId).Username;
             dateOfTwatterPostValue.Text = twaatModel.TimeOfPosting.ToString();
             twatterPostIdValue.Text = twaatModel.Id;
             fullTwatterPostContentRichTextBox.Text = twaatModel.Content;
@@ -83,6 +83,19 @@ namespace LoginFormUI
                 db.EditTwatterPost(currentTwaatModel);
                 UpdatePostEditedTime();
             }
+        }
+
+        private void postedByUserLinkLabelValue_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+            var userWhoPosted = db.GetUserFromId(currentTwaatModel.UserId);
+            var userProfile = new PostedByUserProfileForm();
+            var usersAreFriends = currentUser.Friends.Contains(currentTwaatModel.UserId) ? true : false;
+
+            userProfile.FillForm(currentUser.Id, userWhoPosted, usersAreFriends, this);
+            this.Hide();
+            userProfile.Show();
+            
         }
     }
 }

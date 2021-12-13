@@ -33,7 +33,7 @@ namespace LoginFormUI
 
         private void PostTwaatForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            userForm.GetTwaats();
+            userForm.OccupyTwaatList();
             userForm.Show();
         }
 
@@ -50,15 +50,23 @@ namespace LoginFormUI
 
         private void postTwaatButton_Click(object sender, EventArgs e)
         {
-            var newTwaat = new TwaatModel(twaatContentRichTextBox.Text);
-            newTwaat.UserId = currentUser.Id;
-            newTwaat.Content = twaatContentRichTextBox.Text;
-            newTwaat.TimeOfPosting = DateTime.Now;
+            if (twaatContentRichTextBox.Text == "")
+            {
+                MessageBox.Show("Please write something first");
+            }
+            else
+            {
+                var newTwaat = new TwaatModel(twaatContentRichTextBox.Text);
+                newTwaat.UserId = currentUser.Id;
+                newTwaat.Content = twaatContentRichTextBox.Text;
+                newTwaat.TimeOfPosting = DateTime.Now;
 
-            db.CreateTwaat(newTwaat);
+                db.CreateTwaat(newTwaat);
 
-            MessageBox.Show("Twaat posted!");
-            twaatContentRichTextBox.Clear();
+                userForm.GetTwaats();
+                MessageBox.Show("Twaat posted!");
+                twaatContentRichTextBox.Clear();
+            }
         }
     }
 }

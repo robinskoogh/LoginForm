@@ -33,12 +33,12 @@
             this.postedByUserLabel = new System.Windows.Forms.Label();
             this.dateOfTwatterPostLabel = new System.Windows.Forms.Label();
             this.twatterPostIdLabel = new System.Windows.Forms.Label();
-            this.postedByUserValue = new System.Windows.Forms.Label();
             this.dateOfTwatterPostValue = new System.Windows.Forms.Label();
             this.twatterPostIdValue = new System.Windows.Forms.Label();
             this.closeTwatterPostViewerButton = new System.Windows.Forms.Button();
             this.editTwatterPostButton = new System.Windows.Forms.Button();
             this.postEditedDateTimeValueLabel = new System.Windows.Forms.Label();
+            this.postedByUserLinkLabelValue = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // headerLabel
@@ -89,15 +89,6 @@
             this.twatterPostIdLabel.Size = new System.Drawing.Size(80, 30);
             this.twatterPostIdLabel.TabIndex = 8;
             this.twatterPostIdLabel.Text = "Post id:";
-            // 
-            // postedByUserValue
-            // 
-            this.postedByUserValue.AutoSize = true;
-            this.postedByUserValue.Location = new System.Drawing.Point(199, 115);
-            this.postedByUserValue.Name = "postedByUserValue";
-            this.postedByUserValue.Size = new System.Drawing.Size(80, 30);
-            this.postedByUserValue.TabIndex = 8;
-            this.postedByUserValue.Text = "<user>";
             // 
             // dateOfTwatterPostValue
             // 
@@ -152,12 +143,24 @@
             this.postEditedDateTimeValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.postEditedDateTimeValueLabel.Visible = false;
             // 
+            // postedByUserLinkLabelValue
+            // 
+            this.postedByUserLinkLabelValue.AutoSize = true;
+            this.postedByUserLinkLabelValue.Location = new System.Drawing.Point(199, 115);
+            this.postedByUserLinkLabelValue.Name = "postedByUserLinkLabelValue";
+            this.postedByUserLinkLabelValue.Size = new System.Drawing.Size(80, 30);
+            this.postedByUserLinkLabelValue.TabIndex = 11;
+            this.postedByUserLinkLabelValue.TabStop = true;
+            this.postedByUserLinkLabelValue.Text = "<user>";
+            this.postedByUserLinkLabelValue.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.postedByUserLinkLabelValue_LinkClicked);
+            // 
             // TwatterPostViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(544, 464);
+            this.Controls.Add(this.postedByUserLinkLabelValue);
             this.Controls.Add(this.postEditedDateTimeValueLabel);
             this.Controls.Add(this.editTwatterPostButton);
             this.Controls.Add(this.closeTwatterPostViewerButton);
@@ -165,7 +168,6 @@
             this.Controls.Add(this.twatterPostIdLabel);
             this.Controls.Add(this.dateOfTwatterPostValue);
             this.Controls.Add(this.dateOfTwatterPostLabel);
-            this.Controls.Add(this.postedByUserValue);
             this.Controls.Add(this.postedByUserLabel);
             this.Controls.Add(this.fullTwatterPostContentRichTextBox);
             this.Controls.Add(this.headerLabel);
@@ -187,11 +189,11 @@
         private System.Windows.Forms.Label postedByUserLabel;
         private System.Windows.Forms.Label dateOfTwatterPostLabel;
         private System.Windows.Forms.Label twatterPostIdLabel;
-        private System.Windows.Forms.Label postedByUserValue;
         private System.Windows.Forms.Label dateOfTwatterPostValue;
         private System.Windows.Forms.Label twatterPostIdValue;
         private System.Windows.Forms.Button closeTwatterPostViewerButton;
         private System.Windows.Forms.Button editTwatterPostButton;
         private System.Windows.Forms.Label postEditedDateTimeValueLabel;
+        private System.Windows.Forms.LinkLabel postedByUserLinkLabelValue;
     }
 }
